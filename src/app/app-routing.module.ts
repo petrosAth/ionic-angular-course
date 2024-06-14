@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomePage } from './home/home.page';
-
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomePage,
+    redirectTo: 'recipes',
+  },
+  {
+    path: 'recipes',
+    loadChildren: () =>
+      import('./recipes/recipes.module').then((m) => m.RecipesPageModule),
   },
 ];
 
